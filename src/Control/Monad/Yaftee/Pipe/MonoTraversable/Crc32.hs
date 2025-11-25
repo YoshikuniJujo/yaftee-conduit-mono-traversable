@@ -10,6 +10,8 @@ module Control.Monad.Yaftee.Pipe.MonoTraversable.Crc32 (
 
 	run, complement, crc32, crc32',
 
+	reset,
+
 	step
 
 	) where
@@ -52,6 +54,10 @@ crc32' nm = do
 		Nothing -> pure ()
 		Just bs -> (>> go)
 			$ State.modifyN nm (`step` bs) >> Pipe.yield bs
+
+reset :: forall nm ->
+	(U.Member (State.Named nm Crc32.C) es) => Eff.E es i o ()
+reset nm = State.putN nm $ Crc32.initial
 
 step :: (MonoFoldable mono, Element mono ~ Word8) => Crc32.C -> mono -> Crc32.C
 step = ofoldl' Crc32.step
