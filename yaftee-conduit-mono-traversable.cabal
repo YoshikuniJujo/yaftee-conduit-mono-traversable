@@ -5,7 +5,7 @@ cabal-version: 2.2
 -- see: https://github.com/sol/hpack
 
 name:           yaftee-conduit-mono-traversable
-version:        0.1.0.0
+version:        0.1.0.1
 synopsis:       Mono traversable tools for Yaftee Conduit
 description:    Please see the README on GitHub at <https://github.com/YoshikuniJujo/yaftee-conduit-mono-traversable#readme>
 category:       Control
